@@ -36,7 +36,7 @@ public class Piece extends StackPane {
     //vytvoření figurky
 public Piece(PieceType type, int x, int y) {
     this.type = type;
-
+    move(x, y);
     Ellipse bg = new Ellipse(30, 30);
     bg.setFill(Color.WHITE);
 
@@ -65,9 +65,19 @@ public Piece(PieceType type, int x, int y) {
 
     setOnMouseDragged(e -> {
         relocate(e.getSceneX() - mouseX + oldX, e.getSceneY() - mouseY + oldY);
-    });
+    });}
 
-}}
+    public void move(int x, int y) {
+        oldX = x * TILE_SIZE;
+        oldY = y * TILE_SIZE ;
+        relocate(oldX, oldY);
+    }
+    public void abortMove() {
+        relocate(oldX, oldY);
+    }
+
+}
+
 
 
 

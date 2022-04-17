@@ -78,11 +78,36 @@ public class HelloController extends Application {
     //vytvoření jedné figurky v jednom políčku
     private Piece makePiece(PieceType type, int x, int y) {
         Piece piece = new Piece(type, x, y);
+        piece.setOnMouseReleased(e -> {
+            int newX = toBoard(piece.getLayoutX());
+            int newY = toBoard(piece.getLayoutY());
 
+            MoveResult result;
 
+            if (newX < 0 || newY < 0 || newX >= WIDTH || newY >= HEIGHT) {
+                result = new MoveResult(MoveType.NONE);
+            } else {
+                result = tryMove( newX, newY);
+            }
 
+            switch (result.getType()) {
+                case NONE:
+                    piece.abortMove();
+                    break;
 
+            }
+        });
+            return piece;
+        }
+    private int toBoard(double pixel) {
 
-        return piece;
+        return (int)(pixel + TILE_SIZE / 2) / TILE_SIZE;
+    }
+    private MoveResult tryMove( int newX, int newY) {
+        if (board[newX][newY].hasPiece() || (newX + newY) % 2 == 0) {
+            return new MoveResult(MoveType.NONE);
+        }
+
+        return new MoveResult(MoveType.NONE);
     }
 }
