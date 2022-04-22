@@ -5,6 +5,8 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Ellipse;
 
+import java.util.Set;
+
 import static com.example.demo.HelloController.TILE_SIZE;
 
 public class Piece extends StackPane {
@@ -40,8 +42,6 @@ public Piece(PieceType type, int x, int y) {
     Ellipse bg = new Ellipse(30, 30);
     bg.setFill(Color.WHITE);
 
-    bg.setStroke(Color.WHITE);
-    bg.setStrokeWidth(5);
     bg.setTranslateX((20));
     bg.setTranslateY((20));
     Ellipse ellipse = new Ellipse(30, 30);
@@ -54,18 +54,33 @@ public Piece(PieceType type, int x, int y) {
     ellipse.setTranslateX((20));
     ellipse.setTranslateY((20));
 
-
     getChildren().addAll(bg, ellipse);
-
 
     setOnMousePressed(e -> {
         mouseX = e.getSceneX();
         mouseY = e.getSceneY();
+        ellipse.setRadiusX(25);
+        ellipse.setRadiusY(25);
+        bg.setRadiusX(25);
+        bg.setRadiusY(25);
+
     });
 
     setOnMouseDragged(e -> {
         relocate(e.getSceneX() - mouseX + oldX, e.getSceneY() - mouseY + oldY);
-    });}
+
+    });
+
+
+     setOnMouseClicked(e -> {
+
+    ellipse.setRadiusX(30);
+    ellipse.setRadiusY(30);
+    bg.setRadiusX(30);
+    bg.setRadiusY(30);
+
+});}
+
 
     public void move(int x, int y) {
         oldX = x * TILE_SIZE;

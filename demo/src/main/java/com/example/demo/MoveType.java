@@ -2,5 +2,5 @@ package com.example.demo;
 
 
 public enum MoveType {
-    NONE
+    NONE, NORMAL
 }
