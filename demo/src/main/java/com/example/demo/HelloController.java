@@ -98,8 +98,13 @@ private Parent createContent() {
                     piece.abortMove();
                     break;
                 case NORMAL:
+                    piece.move(newX, newY);
                     board[x1][y1].setPiece(null);
                     board[newX][newY].setPiece(piece);
+                    break  ;
+                case KILL:
+                    board[newX][newY].setPiece(null);
+
             }
         });
             return piece;
@@ -115,10 +120,15 @@ private Parent createContent() {
         int x1 = toBoard(piece.getOldX());
                 int y1 = toBoard(piece.getOldY());
         if (Math.abs(newX-x1) == 1 || Math.abs(newY - y1) == 1 ) {
-          return new MoveResult(MoveType.NORMAL);
+          return new MoveResult(MoveType.NORMAL); }
+        //  else if (Math.abs(newX- x1) == 1  || //
+         //  int x2 = newX + 2 ;
+
+            //int y2 = newY + 2 ;
+             /*  else if (Math.abs(newX - x1) == 2 && newY - y1 == piece.getType().moveDir * 2){
+
+            }*/
+                return new MoveResult(MoveType.NONE);
         }
 
-
-        return new MoveResult(MoveType.NONE);
-    }
 }
