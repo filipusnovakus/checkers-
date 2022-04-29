@@ -8,7 +8,11 @@ public class MoveResult {
         return type;
     }
 
+    private Piece piece;
 
+    public Piece getPiece() {
+        return piece;
+    }
 
     public MoveResult(MoveType type) {
         this(type, null);
@@ -16,6 +20,7 @@ public class MoveResult {
 
     public MoveResult(MoveType type, Piece piece) {
         this.type = type;
+        this.piece = piece;
 
     }
 }

@@ -1,6 +1,7 @@
 package com.example.demo;
 
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Ellipse;
@@ -10,7 +11,7 @@ import java.util.Set;
 import static com.example.demo.HelloController.TILE_SIZE;
 
 public class Piece extends StackPane {
-//definování že každá figurka bude mít jednu nebo druhou barvu
+
         private PieceType type;
 
 
@@ -35,7 +36,7 @@ public class Piece extends StackPane {
 
 
 
-    //vytvoření figurky
+
 public Piece(PieceType type, int x, int y) {
     this.type = type;
     move(x, y);
@@ -74,10 +75,13 @@ public Piece(PieceType type, int x, int y) {
 
      setOnMouseClicked(e -> {
 
+
     ellipse.setRadiusX(30);
     ellipse.setRadiusY(30);
     bg.setRadiusX(30);
     bg.setRadiusY(30);
+
+
 
 });}
 

@@ -5,7 +5,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
 public class Tile extends Rectangle {
-    //objekt který reprezentuje jedno políčko - pro kontrolu zda se zde nachází figurka nebo ne
+
     private Piece piece;
 
 
